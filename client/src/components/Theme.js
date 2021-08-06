@@ -17,7 +17,7 @@ const theme = createTheme({
       },
       lucent: {
           main: '#ffffff',
-          mainOpacity: 'rgba(255, 255, 255, 0.75)',
+          mainOpacity: 'rgba(230, 230, 230, 0.85)',
       },
     },
 
@@ -25,6 +25,24 @@ const theme = createTheme({
         fontFamily: font,
         button: {
             textTransform: "none"
+        }
+    },
+
+    overrides: {
+        MuiPaper: {
+            rounded: {
+                background: 'rgba(230, 230, 230, 0.85)',
+                padding: '1.5rem',
+                borderRadius: '0.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }
+        },
+        MuiButton: {
+            root: {
+                borderRadius: "2rem",
+            }
         }
     }
 
