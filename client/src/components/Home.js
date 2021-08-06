@@ -8,11 +8,11 @@ import
     { 
         Grid, 
         Container, 
+        Paper,
         Button, 
         CssBaseline 
     } 
 from '@material-ui/core';
-import card from './Cards';
 
 //Theme
 import theme from '../components/Theme';
@@ -25,7 +25,6 @@ const styles = makeStyles({
 
 export default function Home() {
     const classes = styles();
-    const cards = card();
 
     return (
         <Container
@@ -33,7 +32,7 @@ export default function Home() {
             maxWidth="xs"
         >
             <CssBaseline />
-            <div className={cards.paper}>
+            <Paper>
                 <Grid 
                     container
                     spacing={2}
@@ -68,7 +67,7 @@ export default function Home() {
                         </Button>
                     </Grid>
                 </Grid>
-            </div>
+            </Paper>
         </Container>
     )
 }

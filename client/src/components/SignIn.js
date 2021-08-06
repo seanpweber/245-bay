@@ -6,7 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import 
     {
         Grid, 
-        Container, 
+        Container,
+        Paper,
         Avatar, 
         Typography, 
         TextField, 
@@ -14,7 +15,6 @@ import
         CssBaseline 
     }
 from '@material-ui/core';
-import card from './Cards';
 
 //Icons
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -38,7 +38,6 @@ const styles = makeStyles((style) => ({
 
 export default function SignIn() {
     const classes = styles();
-    const cards = card();
 
     return (
         <Container
@@ -46,7 +45,7 @@ export default function SignIn() {
             maxWidth="xs"
         >
             <CssBaseline />
-            <div className={cards.paper}>
+            <Paper>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
@@ -74,7 +73,7 @@ export default function SignIn() {
                         Sign In
                     </Button>
                 </form>
-            </div>
+            </Paper>
         </Container>
     );
 }

@@ -17,9 +17,6 @@ import ReactUploadImage from './ReactUploadImage';
 const styles = makeStyles({
     root: {
         height: '100vh',
-        '& .MuiButtonBase-root': {
-            borderRadius: "2rem",
-        }
     }
 })
 
