@@ -12,47 +12,41 @@ import
         CssBaseline 
     } 
 from '@material-ui/core';
+import card from './Cards';
 
 //Theme
 import theme from '../components/Theme';
 
 const styles = makeStyles({
-    paper: {
-      background: 'rgba(255, 255, 255, 0.7)',
-      padding: '1.5rem',
-      borderRadius: '0.5rem',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+    grid: {
+        flexGrow: 1,
     }
 })
 
 export default function Home() {
     const classes = styles();
+    const cards = card();
 
     return (
         <Container
             component="main"
-            maxWidth="sm"
+            maxWidth="xs"
         >
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={cards.paper}>
                 <Grid 
                     container
                     spacing={2}
+                    justifyContent="center"
                 >
-                    <Grid item xs={12}>
-
-                    </Grid>
                     <Grid
                         item
-                        xs={12}
-                        sm={6}
+                        fullWidth
+                        className={classes.grid}
                     >
                         <Button 
                             variant="contained"
                             color="primary"
-                            style={{ background: theme.palette.primary.mainGradientReverse }}
                             component={Link}
                             to="/gallery"
                         >
@@ -61,13 +55,12 @@ export default function Home() {
                     </Grid>
                     <Grid
                         item
-                        xs={12}
-                        sm={6}
+                        fullWidth
+                        className={classes.grid}
                     >
                         <Button
                             variant="contained"
                             color="secondary"
-                            style={{ background: theme.palette.secondary.mainGradient }}
                             component={Link}
                             to="/contactus"
                         >

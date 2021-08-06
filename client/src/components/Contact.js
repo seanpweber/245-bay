@@ -13,6 +13,7 @@ import
         CssBaseline
     } 
 from '@material-ui/core';
+import card from './Cards';
 
 //Libraries
 import * as emailjs from 'emailjs-com';
@@ -21,14 +22,6 @@ import * as emailjs from 'emailjs-com';
 import theme from './Theme';
 
 const styles = makeStyles({
-    paper: {
-        background: theme.palette.lucent.mainOpacity,
-        padding: '1.5rem',
-        borderRadius: '0.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
     divider: {
         marginTop: '0.5rem',
         marginBottom: '0.7rem',
@@ -37,6 +30,7 @@ const styles = makeStyles({
 
 export default function Contact() {
     const classes = styles();
+    const cards = card();
 
     return (
         <Container
@@ -44,7 +38,7 @@ export default function Contact() {
             maxWidth="sm"
         >
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={cards.paper}>
                 <Typography 
                     component="h1" 
                     variant="h5"
@@ -100,20 +94,21 @@ export default function Contact() {
                     <Divider className={classes.divider} />
                     <Grid 
                         container 
-                        spacing={1}
+                        spacing={2}
+                        justifyContent="flex-end"
                     >
-                    <Grid 
-                        item
-                        fullWidth
-                    >
+                        <Grid 
+                            item
+                            fullWidth
+                        >
                             <Button
                                 type="submit"
                                 fullWidth
-                                variant="contained"
-                                color="primary"
+                                variant="outlined"
+                                color="secondary"
                                 spacing={2}
                             >
-                                Send
+                                Cancel
                             </Button>
                         </Grid>
                         <Grid 
@@ -124,10 +119,10 @@ export default function Contact() {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color="secondary"
+                                color="primary"
                                 spacing={2}
                             >
-                                Cancel
+                                Send
                             </Button>
                         </Grid>
                     </Grid>
