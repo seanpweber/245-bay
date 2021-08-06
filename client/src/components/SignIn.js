@@ -14,6 +14,7 @@ import
         CssBaseline 
     }
 from '@material-ui/core';
+import card from './Cards';
 
 //Icons
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -22,17 +23,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import theme from './Theme';
 
 const styles = makeStyles((style) => ({
-    root: {
-        height: '100vh',
-    },
-    paper: {
-        background: theme.palette.lucent.mainOpacity,
-        padding: '1.5rem',
-        borderRadius: '0.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
     avatar: {
         margin: style.spacing(1),
         backgroundColor: theme.palette.secondary.main,
@@ -48,6 +38,7 @@ const styles = makeStyles((style) => ({
 
 export default function SignIn() {
     const classes = styles();
+    const cards = card();
 
     return (
         <Container
@@ -55,7 +46,7 @@ export default function SignIn() {
             maxWidth="xs"
         >
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={cards.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
@@ -68,22 +59,10 @@ export default function SignIn() {
                         margin="normal"
                         required
                         fullWidth
-                        id="username"
-                        label="User"
-                        name="username"
-                        autoComplete="username"
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
+                        name="key"
+                        label="Admin Key"
+                        type="key"
+                        id="key"
                     />
                     <Button
                         type="submit"

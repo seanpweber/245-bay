@@ -34,9 +34,9 @@ const styles = makeStyles({
     flexGrow: 1,
     color: 'white',
     textDecoration: 'none',
+    textAlign: 'center',
   },
   hide: {
-    flexGrow: 0,
     visibility: 'hidden', 
   }
 });

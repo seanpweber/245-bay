@@ -10,7 +10,10 @@ import
         Toolbar, 
         Typography
     }
-from '@material-ui/core/';  
+from '@material-ui/core/';
+
+//Components
+import AdminBtn from './AdminBtn';
 
 //Theme
 import theme from '../components/Theme';
@@ -23,7 +26,14 @@ const styles = makeStyles({
         background: theme.palette.primary.mainGradientReverse,
     },
     copyright: {
-      justifyContent: 'center',
+      flexGrow: 1,
+      marginLeft: '1em',
+    },
+    adminBtn: {
+        color: 'white',
+    },
+    hide: {
+      visibility: 'hidden', 
     }
 })
 
@@ -36,16 +46,15 @@ export default function Footer() {
                 position="static"
                 className={classes.appBar}
             >
-                <Container maxWidth="md">
-                    <Toolbar className={classes.copyright}>
-                        <Typography
-                            variant="body1" 
-                            color="inherit"
-                        >
-                            © 2021 Sean P. Weber
-                        </Typography>
-                    </Toolbar>
-                </Container>
+                <Toolbar>
+                    <Typography 
+                        className={classes.copyright}
+                        variant="body1" 
+                    >
+                        © 2021 Sean P. Weber
+                    </Typography>
+                    <AdminBtn />
+                </Toolbar>
             </AppBar>
         </div>
     )

@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     fullList: {
         width: 'auto',
     },
-    white: {
+    icon: {
         color: 'white',
     }
 });
@@ -99,7 +99,7 @@ export default function Menu() {
     <div>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon className={classes.white} /></Button>
+          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon className={classes.icon} /></Button>
           <SwipeableDrawer
             className={classes.root}
             anchor={anchor}
