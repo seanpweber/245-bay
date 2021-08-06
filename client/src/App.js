@@ -1,6 +1,6 @@
 //React
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 //Styles
 import { makeStyles } from '@material-ui/core';
@@ -30,7 +30,7 @@ const styles =  makeStyles({
 });
 
 function App() {
-  const classes = styles();
+  styles();
 
   return (
     <Router>

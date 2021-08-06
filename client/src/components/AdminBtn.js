@@ -9,9 +9,6 @@ import { IconButton } from '@material-ui/core';
 //Icons
 import LockIcon from '@material-ui/icons/Lock';
 
-//Theme
-import theme from './Theme';
-
 const styles = makeStyles({
     icon: {
         color: 'white',

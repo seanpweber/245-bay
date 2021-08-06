@@ -1,5 +1,5 @@
 //React
-import { React, Component } from 'react';
+import { React, Component, forwardRef } from 'react';
 
 //Styles
 import { withStyles } from '@material-ui/styles';
@@ -11,10 +11,13 @@ import
         TextField, 
         Divider,
         Button,  
-        Grid, 
+        Grid,
+        Modal,
+        Backdrop,
         CssBaseline
     } 
 from '@material-ui/core';
+import { useSpring, animated } from 'react-spring';
 
 //Libraries
 import * as emailjs from 'emailjs-com';
@@ -24,8 +27,45 @@ const styles = theme => ({
     divider: {
         marginTop: '0.5rem',
         marginBottom: '0.7rem',
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: '15em',
     }
 });
+
+const Fade = forwardRef(function Fade(props, ref) {
+    const { in: open, children, onEnter, onExited, ...other } = props;
+    const style = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: open ? 1 : 0 },
+        onStart: () => {
+            if (open && onEnter) {
+            onEnter();
+            }
+        },
+        onRest: () => {
+            if (!open && onExited) {
+            onExited();
+            }
+        },
+    });
+
+    return (
+        <animated.div ref={ref} style={style} {...other}>
+            {children}
+        </animated.div>
+    );
+});
+
+Fade.propTypes = {
+    children: PropTypes.element,
+    in: PropTypes.bool.isRequired,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
+};
 
 class Contact extends Component {
     constructor(props){
@@ -34,7 +74,8 @@ class Contact extends Component {
             name: '',
             email: '',
             subject: '',
-            message: ''
+            message: '',
+            open: false,
         };
     }
     
@@ -56,15 +97,17 @@ class Contact extends Component {
                 message: message,
             }
 
+            console.log(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE, process.env.REACT_APP_EMAIL_USER)
+
             emailjs.send(
                 'my_dev_gmail',
-                'template_1lmptai',
+                'template_j6ztv0i',
                 templateParams,
                 'user_e2SBprNH4w0Ma1Ze0RS4r'
             )
 
-            alert("Message Sent!")
-            // this.showModal();
+            // alert("Message Sent!");
+            this.handleOpen();
             this.resetForm();
         }
     }
@@ -76,20 +119,24 @@ class Contact extends Component {
             subject: '',
             message: '',
         })
-    }   
-
-    showModal() {
-        //sets element to be manipulated as #emailSent
-        var myID = document.getElementById("emailSent");
-    
-        //shows modal
-        myID.style.display = "block";
-    }
+    } 
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.handleSend();
     }
+
+    handleOpen = () => {
+        this.setState({
+            open: true
+        });
+    };
+    
+    handleClose = () => {
+        this.setState({
+            open: false
+        });
+    };
 
     render(){
         const { classes } = this.props;
@@ -160,7 +207,7 @@ class Contact extends Component {
                             value={this.state.message}
                             onChange={this.handleChange.bind(this, 'message')}
                             multiline
-                            rows={5}
+                            rows={6}
                         />
                         <Divider className={classes.divider} />
                         <Grid 
@@ -200,6 +247,25 @@ class Contact extends Component {
                         </Grid>
                     </form>
                 </Paper>
+                <Modal
+                    aria-labelledby="spring-modal-title"
+                    aria-describedby="spring-modal-description"
+                    className={classes.modal}
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                    timeout: 500,
+                    }}
+                >
+                    <Fade in={this.state.open}>
+                    <Paper>
+                        <h2 id="spring-modal-title">Message sent!</h2>
+                        <p id="spring-modal-description">We appreciate your interest</p>
+                    </Paper>
+                    </Fade>
+                </Modal>
             </Container>
         )
     }

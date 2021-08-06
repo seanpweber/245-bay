@@ -1,10 +1,12 @@
 //React
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { React, Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 //Styles
-import { makeStyles } from '@material-ui/styles';
-import { Grid, Slide } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import { Grid } from '@material-ui/core';
+
+import PropTypes from 'prop-types';
 
 //Components
 import Home from './Home';
@@ -14,41 +16,45 @@ import Contact from './Contact';
 import SignIn from './SignIn';
 import ReactUploadImage from './ReactUploadImage';
 
-const styles = makeStyles({
+const styles = theme => ({
     root: {
         height: '100vh',
     }
 })
 
-const states = ["home", "aboutus", "gallery", "contactus", "/admin/signin", "/admin/upload"]
-const transitionDuration = 300;
+class BodyGrid extends Component {
 
-// function Transition(props) {
-//     return <Slide direction="up" {...props} />;
-// }
+    render() {
+        const { classes } = this.props;
 
-export default function BodyGrid() {
-    const classes = styles();
-
-    return (
-        <div id="content">
-            <Grid
-                container
-                className={classes.root}
-                spacing={0}
-                align="center"
-                justify="center"
-                direction="column"
-            >
-                <Grid item>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/aboutus" component={About} />
-                        <Route exact path="/gallery" component={Gallery} />
-                        <Route exact path="/contactus" component={Contact} />
-                        <Route exact path="/admin/signin" component={SignIn} />
-                        <Route exact path="/admin/upload" component={ReactUploadImage} />
+        return (
+            <div id="content">
+                <Grid
+                    container
+                    className={classes.root}
+                    spacing={0}
+                    align="center"
+                    justify="center"
+                    direction="column"
+                >
+                    <Grid item>
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/aboutus" component={About} />
+                            <Route exact path="/gallery" component={Gallery} />
+                            <Route exact path="/contactus" component={Contact} />
+                            <Route exact path="/admin/signin" component={SignIn} />
+                            <Route exact path="/admin/upload" component={ReactUploadImage} />
+                        </Switch>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </div>
-    )
+            </div>
+        )
+    }
 }
+
+Contact.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
+export default withStyles(styles)(BodyGrid);
