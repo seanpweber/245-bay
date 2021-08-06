@@ -8,13 +8,9 @@ import
     { 
         AppBar, 
         Toolbar, 
-        Typography, 
-        IconButton 
+        Typography
     } 
 from '@material-ui/core';
-
-//Icons
-import MenuIcon from '@material-ui/icons/Menu';
 
 //Components
 import Menu from './Menu';
