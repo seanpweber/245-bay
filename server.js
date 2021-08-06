@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to zzzleepy's server." });
+    res.json({ message: "Welcome to 245 Bay's server." });
   });
 
 app.get('/', (req, res) => {//listens for when the client opens the site.
