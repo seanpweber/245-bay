@@ -5,8 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-var PORT = process.env.PORT || 4000;
-const serv = require('http').Server(app);
+var PORT = process.env.PORT || 4000 ;
 
 app.use(bodyParser.json());
 
@@ -28,6 +27,4 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(__dirname + "/client"));
 }
 
-serv.listen(PORT, function() {
-    console.log('Server is running on http://localhost:' + PORT);
-});
+app.listen(PORT, () => console.log('Server is running on http://localhost:' + PORT));
