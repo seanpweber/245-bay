@@ -123,8 +123,6 @@ export function AdminPanel() {
                         Upload Image
                     </ListItemText>
                 </ListItem>
-            </List>
-            <List>
                 <ListItem 
                     button 
                     component={Link} 

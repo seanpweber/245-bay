@@ -20,7 +20,7 @@ import MenuList, { AdminPanel } from './MenuLists';
 //Theme
 import theme from '../components/Theme';
 
-const styles = style => ({
+const styles = () => ({
     root: {
         '& .MuiPaper-root': {
             background: theme.palette.lucent.mainOpacity,
@@ -62,8 +62,7 @@ class Menu extends Component{
       <div>
           <Fragment key={this.props.side}>
             <Button className={classes.icon} onClick={toggleDrawer(true)}>
-              { this.props.menu ? <MenuIcon /> : null }
-              { this.props.admin ? <PersonIcon /> : null }
+              { this.props.admin ? <PersonIcon /> : <MenuIcon /> }
             </Button>
             <SwipeableDrawer
               className={classes.root}
@@ -78,8 +77,7 @@ class Menu extends Component{
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
               >
-                { this.props.menu ? <MenuList /> : null }
-                { this.props.admin ? <AdminPanel /> : null }
+                { this.props.admin ? <AdminPanel /> : <MenuList /> }
               </div>
             </SwipeableDrawer>
           </Fragment>

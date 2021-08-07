@@ -45,7 +45,7 @@ export default function Nav() {
         className={classes.appBar}
       >
         <Toolbar>
-          <Menu menu side='left'/>
+          <Menu side='left'/>
           <Typography
             component={Link}
             to="/"
