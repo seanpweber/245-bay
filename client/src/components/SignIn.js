@@ -3,18 +3,16 @@ import React from 'react';
 
 //Styles
 import { makeStyles } from '@material-ui/core/styles';
-import 
-    {
-        Grid, 
-        Container,
-        Paper,
-        Avatar, 
-        Typography, 
-        TextField, 
-        Button, 
-        CssBaseline 
-    }
-from '@material-ui/core';
+import {
+    Grid, 
+    Container,
+    Paper,
+    Avatar, 
+    Typography, 
+    TextField, 
+    Button, 
+    CssBaseline 
+} from '@material-ui/core';
 
 //Icons
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -45,7 +43,7 @@ export default function SignIn() {
             maxWidth="xs"
         >
             <CssBaseline />
-            <Paper>
+            <Paper elevation={6}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
@@ -60,7 +58,7 @@ export default function SignIn() {
                         fullWidth
                         name="key"
                         label="Admin Key"
-                        type="key"
+                        type="password"
                         id="key"
                     />
                     <Button

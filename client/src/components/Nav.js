@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 
 //Styles
 import { makeStyles } from '@material-ui/styles';
-import 
-    { 
-        AppBar, 
-        Toolbar, 
-        Typography
-    } 
+import { AppBar, 
+  Toolbar, 
+  Typography
+} 
 from '@material-ui/core';
 
 //Components
@@ -47,7 +45,7 @@ export default function Nav() {
         className={classes.appBar}
       >
         <Toolbar>
-          <Menu />
+          <Menu menu side='left'/>
           <Typography
             component={Link}
             to="/"
@@ -56,8 +54,8 @@ export default function Nav() {
           >
             245 Bay
           </Typography>
-          <div className={classes.hide}>
-            <Menu />
+          <div>
+            <Menu admin side='right' />
           </div>
         </Toolbar>
       </AppBar>

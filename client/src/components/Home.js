@@ -4,15 +4,12 @@ import { Link } from 'react-router-dom';
 
 //Styles
 import { makeStyles } from '@material-ui/core/styles';
-import 
-    { 
-        Grid, 
-        Container, 
-        Paper,
-        Button, 
-        CssBaseline 
-    } 
-from '@material-ui/core';
+import { Grid, 
+    Container, 
+    Paper,
+    Button, 
+    CssBaseline 
+} from '@material-ui/core';
 
 //Theme
 import theme from '../components/Theme';

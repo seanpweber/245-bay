@@ -1,34 +1,25 @@
 //React
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { React, Component, Fragment, setState } from 'react';
 
 //Styles
-import { makeStyles } from '@material-ui/styles';
-import 
-    { 
-        List, 
-        ListItem, 
-        ListItemIcon, 
-        ListItemText, 
-        Divider, 
-        Button, 
-        SwipeableDrawer  
-    } 
-from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+import { Button, 
+  SwipeableDrawer
+} from '@material-ui/core';
 
 //Icons
-import HomeIcon from '@material-ui/icons/Home';
-import PersonIcon from '@material-ui/icons/Person';
-import ImageIcon from '@material-ui/icons/Image';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 
 //Libraries
-import clsx from 'clsx';
+import PropTypes from 'prop-types'
 
+//Components
+import MenuList, { AdminPanel } from './MenuLists';
+
+//Theme
 import theme from '../components/Theme';
 
-const useStyles = makeStyles({
+const styles = style => ({
     root: {
         '& .MuiPaper-root': {
             background: theme.palette.lucent.mainOpacity,
@@ -45,72 +36,60 @@ const useStyles = makeStyles({
     }
 });
 
-export default function Menu() {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+class Menu extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+  }
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
+  render() {
+    const { classes } = this.props;
 
-    setState({ ...state, [anchor]: open });
-  };
-
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-          <ListItem button component={Link} to="/">
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText>Home</ListItemText>
-          </ListItem>
-          <ListItem button component={Link} to="/aboutus">
-            <ListItemIcon><PersonIcon /></ListItemIcon>
-            <ListItemText>About Us</ListItemText>
-          </ListItem>
-          <ListItem button component={Link} to="/gallery">
-            <ListItemIcon><ImageIcon /></ListItemIcon>
-            <ListItemText>Gallery</ListItemText>
-          </ListItem>
-      </List>
-      <Divider />
-      <List>
-          <ListItem button component={Link} to="/contactus">
-            <ListItemIcon><MailIcon /></ListItemIcon>
-            <ListItemText>Contact Us </ListItemText>
-          </ListItem>
-      </List>
-    </div>
-  );
-
-  return (
-    <div>
-      {['left'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon className={classes.icon} /></Button>
-          <SwipeableDrawer
-            className={classes.root}
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-          >
-            {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </div>
-  );
+    const toggleDrawer = (open) => (event) => {
+      if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+      }
+  
+      this.setState({
+        open: open,
+      });
+    };
+  
+    return (
+      <div>
+          <Fragment key={this.props.side}>
+            <Button onClick={toggleDrawer(true)}>
+              <MenuIcon className={classes.icon} />
+            </Button>
+            <SwipeableDrawer
+              className={classes.root}
+              anchor={this.props.side}
+              open={this.state.open}
+              onClose={toggleDrawer(false)}
+              onOpen={toggleDrawer(true)}
+            >
+              <div
+                className={classes.list}
+                role="presentation"
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+              >
+                { this.props.menu ? <MenuList /> : null }
+                { this.props.admin ? <AdminPanel /> : null }
+              </div>
+            </SwipeableDrawer>
+          </Fragment>
+      </div>
+    );
+  }
 }
+
+Menu.propTypes = {
+  classes: PropTypes.object.isRequired,
+  menu: PropTypes.bool,
+  admin: PropTypes.bool,
+};
+
+export default withStyles(styles)(Menu);
