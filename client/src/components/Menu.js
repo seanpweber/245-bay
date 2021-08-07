@@ -9,6 +9,7 @@ import { Button,
 
 //Icons
 import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
 
 //Libraries
 import PropTypes from 'prop-types'
@@ -60,8 +61,9 @@ class Menu extends Component{
     return (
       <div>
           <Fragment key={this.props.side}>
-            <Button onClick={toggleDrawer(true)}>
-              <MenuIcon className={classes.icon} />
+            <Button className={classes.icon} onClick={toggleDrawer(true)}>
+              { this.props.menu ? <MenuIcon /> : null }
+              { this.props.admin ? <PersonIcon /> : null }
             </Button>
             <SwipeableDrawer
               className={classes.root}
