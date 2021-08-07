@@ -3,14 +3,11 @@ import React from 'react';
 
 //Styles
 import { makeStyles, mergeClasses } from '@material-ui/styles';
-import 
-    { 
-        AppBar, 
-        Container, 
-        Toolbar, 
-        Typography
-    }
-from '@material-ui/core/';
+import { AppBar, 
+    Container, 
+    Toolbar, 
+    Typography
+} from '@material-ui/core/';
 
 //Components
 import AdminBtn from './AdminBtn';

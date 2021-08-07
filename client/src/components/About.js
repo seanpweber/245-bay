@@ -3,17 +3,14 @@ import React from 'react';
 
 //Styles
 import { makeStyles } from '@material-ui/styles';
-import 
-    { 
-        Container,
-        Paper,
-        Typography, 
-        Divider,
-        Button,  
-        Grid, 
-        CssBaseline
-    } 
-from '@material-ui/core';
+import { Container,
+    Paper,
+    Typography, 
+    Divider,
+    Button,  
+    Grid, 
+    CssBaseline
+} from '@material-ui/core';
 
 export default function About() {
 

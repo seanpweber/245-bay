@@ -3,20 +3,17 @@ import { React, Component, forwardRef } from 'react';
 
 //Styles
 import { withStyles } from '@material-ui/styles';
-import 
-    { 
-        Container,
-        Paper,
-        Typography, 
-        TextField, 
-        Divider,
-        Button,  
-        Grid,
-        Modal,
-        Backdrop,
-        CssBaseline
-    } 
-from '@material-ui/core';
+import { Container,
+    Paper,
+    Typography, 
+    TextField, 
+    Divider,
+    Button,  
+    Grid,
+    Modal,
+    Backdrop,
+    CssBaseline
+} from '@material-ui/core';
 import { useSpring, animated } from 'react-spring';
 
 //Libraries
@@ -99,15 +96,14 @@ class Contact extends Component {
 
             console.log(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE, process.env.REACT_APP_EMAIL_USER)
 
-            emailjs.send(
-                'my_dev_gmail',
-                'template_j6ztv0i',
-                templateParams,
-                'user_e2SBprNH4w0Ma1Ze0RS4r'
-            )
+            // emailjs.send(
+            //     'my_dev_gmail',
+            //     'template_j6ztv0i',
+            //     templateParams,
+            //     'user_e2SBprNH4w0Ma1Ze0RS4r'
+            // )
 
-            // alert("Message Sent!");
-            this.handleOpen();
+            // this.handleOpen();
             this.resetForm();
         }
     }
@@ -147,7 +143,7 @@ class Contact extends Component {
                 maxWidth="sm"
             >
                 <CssBaseline />
-                <Paper>
+                <Paper elevation={6}>
                     <Typography 
                         component="h1" 
                         variant="h5"
@@ -240,6 +236,7 @@ class Contact extends Component {
                                     variant="contained"
                                     color="primary"
                                     spacing={2}
+                                    onClick={this.handleOpen}
                                 >
                                     Send
                                 </Button>
@@ -273,6 +270,6 @@ class Contact extends Component {
 
 Contact.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 export default withStyles(styles)(Contact);

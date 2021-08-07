@@ -17,6 +17,7 @@ const theme = createTheme({
       },
       lucent: {
           main: '#ffffff',
+          mainGradient: 'linear-gradient(25deg, #b6b6b6 20%, #f0f0f0 80%)',
           mainOpacity: 'rgba(230, 230, 230, 0.85)',
       },
     },
