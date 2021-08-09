@@ -1,31 +1,25 @@
 //React
-import React from 'react';
+import React from 'react'
 
 //Styles
-import { makeStyles } from '@material-ui/styles';
-import { Container,
-    Paper,
-    Typography, 
-    Divider,
-    Button,  
-    Grid, 
-    CssBaseline
-} from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles'
+import {
+   Typography,
+   Divider,
+   Button,
+   Grid,
+   CssBaseline,
+} from '@material-ui/core'
+
+//Components
+import Card from './Card'
 
 export default function Gallery() {
-    return (
-        <Container
-            component="main"
-            maxWidth="md"
-        >
-            <Paper>
-                <Typography
-                    component="h1"
-                    variant="h5"
-                >
-                    Gallery
-                </Typography>
-            </Paper>
-        </Container>
-    )
+   return (
+      <Card width='md'>
+         <Typography component='h1' variant='h5'>
+            Gallery
+         </Typography>
+      </Card>
+   )
 }

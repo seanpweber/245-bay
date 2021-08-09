@@ -1,32 +1,33 @@
 //React
-import React from 'react';
+import { React, Component } from 'react'
 
 //Styles
-import { makeStyles } from '@material-ui/styles';
-import { Container,
-    Paper,
-    Typography, 
-    Divider,
-    Button,  
-    Grid, 
-    CssBaseline
-} from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import {
+   Typography,
+   Divider,
+   Button,
+   Grid,
+   CssBaseline,
+} from '@material-ui/core'
 
-export default function About() {
+//Components
+import Card from './Card'
 
-    return (
-        <Container
-            component="main"
-            maxWidth="md"
-        >
-            <Paper>
-                <Typography
-                    component="h1"
-                    variant="h5"
-                >
-                    About Us
-                </Typography>
-            </Paper>
-        </Container>
-    )
+const styles = () => ({
+   root: {},
+})
+
+class About extends Component {
+   render() {
+      return (
+         <Card width='sm'>
+            <Typography component='h1' variant='h5'>
+               About Us
+            </Typography>
+         </Card>
+      )
+   }
 }
+
+export default withStyles(styles)(About)

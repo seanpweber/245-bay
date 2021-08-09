@@ -1,27 +1,43 @@
 //React
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { React, Component } from 'react'
+import { Link } from 'react-router-dom'
 
 //Styles
-import { makeStyles } from '@material-ui/styles';
-import { IconButton } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import { IconButton } from '@material-ui/core'
 
 //Icons
-import LockIcon from '@material-ui/icons/Lock';
+import LockIcon from '@material-ui/icons/Lock'
 
-const styles = makeStyles({
-    icon: {
-        color: 'white',
-        fontSize: '0.75em',
-    }
+const styles = () => ({
+   icon: {
+      color: 'white',
+      fontSize: '0.75em',
+   },
 })
 
-export default function AdminBtn() {
-    const classes = styles();
+class AdminBtn extends Component {
+   handleChange = (event) => {
+      if ('/' + event.currentTarget.id === window.location.pathname) {
+         event.preventDefault()
+      } else {
+         // Here, we invoke the callback with the new value
+         this.props.transition(event.currentTarget.id)
+      }
+   }
 
-    return (
-        <IconButton component={Link} to='/admin/signin'>
+   render() {
+      const { classes } = this.props
+
+      return (
+         <IconButton
+            component={Link}
+            to='/admin/signin'
+            onClick={this.handleChange}>
             <LockIcon className={classes.icon} />
-        </IconButton>
-    )
+         </IconButton>
+      )
+   }
 }
+
+export default withStyles(styles)(AdminBtn)
