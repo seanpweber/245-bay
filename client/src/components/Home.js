@@ -1,9 +1,9 @@
 //React
-import React from 'react';
+import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
 
 //Styles
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Grid, 
     Container, 
     Paper,
@@ -11,25 +11,36 @@ import { Grid,
     CssBaseline 
 } from '@material-ui/core';
 
+//Components
+import Card from './Card';
+
 //Theme
 import theme from '../components/Theme';
 
-const styles = makeStyles({
+const styles = () => ({
     grid: {
         flexGrow: 1,
     }
 })
 
-export default function Home() {
-    const classes = styles();
+// class Home extends Component {
+//     render() {
+//         let currentComp = this.props.currentComp
+        
+//         if (currentComp !== 1) {
+//             return null
+//           } else {
+//             return <HomePanel />
+//         }
+//     }
+// }
 
-    return (
-        <Container
-            component="main"
-            maxWidth="xs"
-        >
-            <CssBaseline />
-            <Paper>
+class Home extends Component {
+    render() {
+        const { classes } = this.props;
+
+        return (
+            <Card width="xs">
                 <Grid 
                     container
                     spacing={2}
@@ -64,7 +75,9 @@ export default function Home() {
                         </Button>
                     </Grid>
                 </Grid>
-            </Paper>
-        </Container>
-    )
+            </Card>
+        )
+    }
 }
+
+export default withStyles(styles)(Home);

@@ -1,20 +1,27 @@
 //React
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { React, Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 //Styles
-import { makeStyles } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider, withStyles } from '@material-ui/styles';
 
 //Components
+import BodyGrid from './components/BodyGrid';
+import Trans from './components/Trans';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import BodyGrid from './components/BodyGrid';
+import Home from './components/Home';
+import AnimatedRoutes from './components/AnimatedRoutes';
+
+//Routes
+import Routes from './components/Routes';
 
 //Theme
 import theme from './components/Theme';
 
-const styles =  makeStyles({
+let PATH = window.location.pathname;
+
+const styles =  () => ({
   '@global': {
     '*::-webkit-scrollbar': {
       width: 0,
@@ -29,20 +36,54 @@ const styles =  makeStyles({
   }
 });
 
-function App() {
-  styles();
+let comps = ['home', 'about', 'gallery', 'contact']
 
-  return (
-    <Router>
-      <div className="App">
-        <ThemeProvider theme={theme}>
-          <Nav />
-          <BodyGrid />
-          <Footer />
-        </ThemeProvider>
-      </div>
-    </Router>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      home: true,
+      about: false,
+      gallery: false,
+      contact: false,
+    }
+  }
+
+  handleChange = (index) => {
+    for (let i = 0; i < comps.length; i++) {
+      if (this.state[comps[i]]) {
+        this.setState({[comps[i]]: false})
+      }
+    }
+
+    this.setState({[index]: true});
+    console.log([index] + " component is open");
+  }
+
+  render() {
+    styles();
+  
+    return (
+      <Router>
+        <div className="App">
+          <ThemeProvider theme={theme}>
+            <Nav transition={this.handleChange} />
+              <BodyGrid>
+                <Switch>
+                  <Route exact path="/">
+                    <Redirect to="/home" />
+                  </Route>
+                  <Route path="*">  
+                    <AnimatedRoutes />
+                  </Route>
+                </Switch>
+              </BodyGrid>
+            <Footer transition={this.handleChange} />
+          </ThemeProvider>
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default App;
+export default withStyles(styles)(App);

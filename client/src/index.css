@@ -21,11 +21,29 @@ body {
   padding-right: 0px !important;
 }
 
-/* #content {
-  animation: fadeInAnimation ease 0.8s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-} */
+.fade-enter {
+  transform: translateY(50px);
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 250ms ease-in;
+}
+
+.fade-exit {
+  transform: translateY(0px);
+  opacity: 1;
+  z-index: 0;
+}
+
+.fade-exit.fade-exit-active {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 250ms ease-out;
+}
 
 /* Effects */
 @keyframes fadeInAnimation {

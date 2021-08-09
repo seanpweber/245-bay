@@ -1,5 +1,5 @@
 //React
-import { React, Component, Fragment, setState } from 'react';
+import { React, Component, Fragment } from 'react';
 
 //Styles
 import { withStyles } from '@material-ui/styles';
@@ -34,6 +34,10 @@ const styles = () => ({
     },
     icon: {
         color: 'white',
+        height: '100%'
+    },
+    box: {
+      height: '100%',
     }
 });
 
@@ -43,6 +47,11 @@ class Menu extends Component{
     this.state = {
       open: false
     };
+  }
+
+  handleChange = (index) => {
+    // Here, we invoke the callback with the new value
+    this.props.transition(index);
   }
 
   render() {
@@ -77,7 +86,7 @@ class Menu extends Component{
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
               >
-                { this.props.admin ? <AdminPanel /> : <MenuList /> }
+                { this.props.admin ? <AdminPanel transition={this.handleChange} /> : <MenuList transition={this.handleChange} /> }
               </div>
             </SwipeableDrawer>
           </Fragment>

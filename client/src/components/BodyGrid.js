@@ -1,29 +1,23 @@
 //React
 import { React, Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
 
 //Styles
 import { withStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
+//Dependencies
 import PropTypes from 'prop-types';
 
 //Components
-import Home from './Home';
-import About from './About';
-import Gallery from './Gallery';
-import Contact from './Contact';
-import SignIn from './SignIn';
-import ReactUploadImage from './ReactUploadImage';
+import Trans from './Trans'
 
-const styles = theme => ({
+const styles = () => ({
     root: {
         height: '100vh',
     }
 })
 
 class BodyGrid extends Component {
-
     render() {
         const { classes } = this.props;
 
@@ -34,18 +28,11 @@ class BodyGrid extends Component {
                     className={classes.root}
                     spacing={0}
                     align="center"
-                    justify="center"
+                    justifyContent="center"
                     direction="column"
                 >
                     <Grid item>
-                        <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/aboutus" component={About} />
-                            <Route exact path="/gallery" component={Gallery} />
-                            <Route exact path="/contactus" component={Contact} />
-                            <Route exact path="/admin/signin" component={SignIn} />
-                            <Route exact path="/admin/upload" component={ReactUploadImage} />
-                        </Switch>
+                        {this.props.children}
                     </Grid>
                 </Grid>
             </div>
@@ -53,8 +40,8 @@ class BodyGrid extends Component {
     }
 }
 
-Contact.propTypes = {
+BodyGrid.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 export default withStyles(styles)(BodyGrid);

@@ -3,22 +3,23 @@ import { React, Component, forwardRef } from 'react';
 
 //Styles
 import { withStyles } from '@material-ui/styles';
-import { Container,
-    Paper,
-    Typography, 
+import { Typography, 
     TextField, 
     Divider,
     Button,  
     Grid,
     Modal,
-    Backdrop,
-    CssBaseline
+    Paper,
+    Backdrop
 } from '@material-ui/core';
 import { useSpring, animated } from 'react-spring';
 
 //Libraries
 import * as emailjs from 'emailjs-com';
 import PropTypes from 'prop-types';
+
+//Components
+import Card from './Card';
 
 const styles = theme => ({
     divider: {
@@ -29,15 +30,16 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: '15em',
     }
 });
 
 const Fade = forwardRef(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
     const style = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: open ? 1 : 0 },
+        from: { opacity: 0,
+            marginBottom: '-200em '},
+        to: { opacity: open ? 1 : 0,
+            marginBottom: '20em' },
         onStart: () => {
             if (open && onEnter) {
             onEnter();
@@ -104,7 +106,6 @@ class Contact extends Component {
             // )
 
             // this.handleOpen();
-            this.resetForm();
         }
     }
 
@@ -132,18 +133,15 @@ class Contact extends Component {
         this.setState({
             open: false
         });
+        this.resetForm();
     };
 
     render(){
         const { classes } = this.props;
 
         return (
-            <Container
-                component="main"
-                maxWidth="sm"
-            >
-                <CssBaseline />
-                <Paper elevation={6}>
+            <div>
+            <Card width="sm">
                     <Typography 
                         component="h1" 
                         variant="h5"
@@ -178,7 +176,6 @@ class Contact extends Component {
                             autoComplete="email"
                             value={this.state.email}
                             onChange={this.handleChange.bind(this, 'email')}
-                            autoFocus
                         />
                         <TextField
                             variant="outlined"
@@ -190,7 +187,6 @@ class Contact extends Component {
                             name="subject"
                             value={this.state.subject}
                             onChange={this.handleChange.bind(this, 'subject')}
-                            autoFocus
                         />
                         <TextField
                             variant="outlined"
@@ -243,10 +239,8 @@ class Contact extends Component {
                             </Grid>
                         </Grid>
                     </form>
-                </Paper>
+                </Card>
                 <Modal
-                    aria-labelledby="spring-modal-title"
-                    aria-describedby="spring-modal-description"
                     className={classes.modal}
                     open={this.state.open}
                     onClose={this.handleClose}
@@ -257,13 +251,22 @@ class Contact extends Component {
                     }}
                 >
                     <Fade in={this.state.open}>
-                    <Paper>
-                        <h2 id="spring-modal-title">Message sent!</h2>
-                        <p id="spring-modal-description">We appreciate your interest</p>
-                    </Paper>
+                        <Paper>
+                            <Grid>
+                                <Grid item>
+                                    <Typography variant="h4" align="center">
+                                        Message sent!
+                                    </Typography>
+                                    <Divider className={classes.divider}/>
+                                    <Typography>
+                                        We appreciate your interest. We will get back to you as soon as we can!
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </Paper>
                     </Fade>
                 </Modal>
-            </Container>
+                </div>
         )
     }
 }

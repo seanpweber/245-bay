@@ -1,8 +1,8 @@
 //React
-import React from 'react';
+import { React, Component } from 'react';
 
 //Styles
-import { makeStyles, mergeClasses } from '@material-ui/styles';
+import { withStyles } from '@material-ui/styles';
 import { AppBar, 
     Container, 
     Toolbar, 
@@ -15,7 +15,7 @@ import AdminBtn from './AdminBtn';
 //Theme
 import theme from '../components/Theme';
 
-const styles = makeStyles({
+const styles = () => ({
     root: {
         flexGrow: 1,
     },
@@ -33,26 +33,34 @@ const styles = makeStyles({
       visibility: 'hidden', 
     }
 })
+class Footer extends Component {
+    handleChange = (index) => {
+      // Here, we invoke the callback with the new value
+      this.props.transition(index);
+    }
 
-export default function Footer() {
-    const classes = styles();
-
-    return (
-        <div className={classes.root}>
-            <AppBar 
-                position="static"
-                className={classes.appBar}
-            >
-                <Toolbar>
-                    <Typography 
-                        className={classes.copyright}
-                        variant="body1" 
-                    >
-                        © 2021 Sean P. Weber
-                    </Typography>
-                    <AdminBtn />
-                </Toolbar>
-            </AppBar>
-        </div>
-    )
+    render() {
+        const { classes } = this.props;
+    
+        return (
+            <div className={classes.root}>
+                <AppBar 
+                    position="static"
+                    className={classes.appBar}
+                >
+                    <Toolbar>
+                        <Typography 
+                            className={classes.copyright}
+                            variant="body1" 
+                        >
+                            © 2021 Sean P. Weber
+                        </Typography>
+                        <AdminBtn transition={this.handleChange}/>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        )
+    }
 }
+
+export default withStyles(styles)(Footer);
