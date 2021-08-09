@@ -1,88 +1,58 @@
 //React
-import { React, Route } from 'react';
-import { mount, route , withView} from 'navi';
-import { NotFoundBoundary, View, useLoadingRoute } from 'react-navi';
-import BusyIndicator from 'react-busy-indicator';
+import React from 'react'
+import { Route, useLocation, Switch } from 'react-router-dom'
+import { SwitchTransition, CSSTransition } from 'react-transition-group'
+import styled, { keyframes } from 'styled-components'
+import { zoomInLeft } from 'react-animations'
+
+//Styles
+import { withStyles } from '@material-ui/styles'
 
 //Components
-import Home from './Home';
-import About from './About';
-import Gallery from './Gallery';
-import Contact from './Contact';
-import SignIn from './SignIn';
-import ImageUpload from './ImageUpload';
-import Nav from './Nav';
-import Footer from './Footer';
+import Home from './Home'
+import About from './About'
+import Gallery from './Gallery'
+import Contact from './Contact'
+import SignIn from './SignIn'
+import ImageUpload from './ImageUpload'
 
-// This switch will be mounted under "/support" route
-// that is managed by react-router.
-// export const routes = withView (
-//     <Layout>
-//         <View />
-//     </Layout>,
-//     mount({
-//         '/': route({
-//             view: (<Home />)
-//         }),
+const styles = () => ({
+   fill: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+   },
+})
 
-//         '/aboutus': route({
-//             view: (<About />)
-//         }),
+const ZoomLeft = styled.div`
+   animation: 2s ${keyframes`${zoomInLeft}`};
+`
 
-//         '/gallery': route({
-//             view: (<Gallery />)
-//         }),
+function AnimatedRoutes() {
+   const classes = styles()
+   let location = useLocation()
 
-//         '/contactus': route({
-//             view: (<Contact />)
-//         }),
-
-//         '/admin/signin': route({
-//             view: (<SignIn />)
-//         }),
-
-//         '/admin/upload': route({
-//             view: (<ImageUpload />)
-//         }),
-//     })
-// );
-
-export default function Routes() {
-    return (
-        <div>
-            <Route exact path="/" component={Home} />
-            <Route path="/aboutus" component={About} />
-            <Route path="/gallery" component={Gallery} />
-            <Route path="/contactus" component={Contact} />
-            <Route path="/admin/signin" component={SignIn} />
-            <Route path="/admin/upload" component={ImageUpload} />
-        </div>
-    )
+   return (
+      <div>
+         <SwitchTransition>
+            <CSSTransition
+               key={location.key}
+               classNames="fade"
+               timeout={300}>
+               <Switch location={location}>
+                  <Route path='/home' component={Home} />
+                  <Route path='/aboutus' component={About} />
+                  <Route path='/gallery' component={Gallery} />
+                  <Route path='/contactus' component={Contact} />
+                  <Route path='/admin/signin' component={SignIn} />
+                  <Route path='/admin/upload' component={ImageUpload} />
+               </Switch>
+            </CSSTransition>
+         </SwitchTransition>
+      </div>
+   )
 }
 
-function Layout( { children }) {
-    let loadingRoute = useLoadingRoute()
-
-    return (
-        <div className="App">
-            <BusyIndicator
-            color="#1ee79e"
-            delayMs={333}
-            isBusy={!!loadingRoute}
-            />
-            <main>
-                <NotFoundBoundary render={renderNotFound}>
-                    {children || null}
-                </NotFoundBoundary>
-            </main>
-        </div>  
-    )
-}
-  
-function renderNotFound() {
-    return (
-        <div className='App-error'>
-            <h1>404 - Not Found</h1>
-        </div>
-    )
-}
+export default withStyles(styles)(AnimatedRoutes)
