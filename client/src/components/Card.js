@@ -1,11 +1,11 @@
 //React
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 //Styles
-import { Container, Paper, CssBaseline } from '@material-ui/core'
+import { Container, Paper, CssBaseline } from '@material-ui/core';
 
 //Dependencies
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
 
 class Card extends Component {
    render() {
@@ -14,13 +14,13 @@ class Card extends Component {
             <CssBaseline />
             <Paper elevation={6}>{this.props.children}</Paper>
          </Container>
-      )
+      );
    }
 }
 
 Card.propTypes = {
    width: PropTypes.string,
    children: PropTypes.element,
-}
+};
 
-export default Card
+export default Card;

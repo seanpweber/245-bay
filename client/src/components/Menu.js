@@ -1,22 +1,22 @@
 //React
-import { React, Component, Fragment } from 'react'
+import { React, Component, Fragment } from 'react';
 
 //Styles
-import { withStyles } from '@material-ui/styles'
-import { Button, SwipeableDrawer } from '@material-ui/core'
+import { withStyles } from '@material-ui/styles';
+import { Button, SwipeableDrawer } from '@material-ui/core';
 
 //Icons
-import MenuIcon from '@material-ui/icons/Menu'
-import PersonIcon from '@material-ui/icons/Person'
+import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
 
 //Libraries
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 //Components
-import MenuList, { AdminPanel } from './MenuLists'
+import MenuList, { AdminPanel } from './MenuLists';
 
 //Theme
-import theme from '../components/Theme'
+import theme from '../components/Theme';
 
 const styles = () => ({
    root: {
@@ -37,23 +37,23 @@ const styles = () => ({
    box: {
       height: '100%',
    },
-})
+});
 
 class Menu extends Component {
    constructor(props) {
-      super(props)
+      super(props);
       this.state = {
          open: false,
-      }
+      };
    }
 
    handleChange = (index) => {
       // Here, we invoke the callback with the new value
-      this.props.transition(index)
-   }
+      this.props.transition(index);
+   };
 
    render() {
-      const { classes } = this.props
+      const { classes } = this.props;
 
       const toggleDrawer = (open) => (event) => {
          if (
@@ -61,13 +61,13 @@ class Menu extends Component {
             event.type === 'keydown' &&
             (event.key === 'Tab' || event.key === 'Shift')
          ) {
-            return
+            return;
          }
 
          this.setState({
             open: open,
-         })
-      }
+         });
+      };
 
       return (
          <div>
@@ -95,7 +95,7 @@ class Menu extends Component {
                </SwipeableDrawer>
             </Fragment>
          </div>
-      )
+      );
    }
 }
 
@@ -103,6 +103,6 @@ Menu.propTypes = {
    classes: PropTypes.object.isRequired,
    menu: PropTypes.bool,
    admin: PropTypes.bool,
-}
+};
 
-export default withStyles(styles)(Menu)
+export default withStyles(styles)(Menu);

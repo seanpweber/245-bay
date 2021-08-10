@@ -1,21 +1,21 @@
 //React
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 //Styles
-import { withStyles } from '@material-ui/styles'
+import { withStyles } from '@material-ui/styles';
 import {
    Container,
    Paper,
    Typography,
    TextField,
    CssBaseline,
-} from '@material-ui/core'
+} from '@material-ui/core';
 
-import axios from 'axios'
+import axios from 'axios';
 
 const styles = (style) => ({
    root: {},
-})
+});
 
 class ImageUpload extends Component {
    render() {
@@ -42,8 +42,8 @@ class ImageUpload extends Component {
                </div>
             </Paper>
          </Container>
-      )
+      );
    }
 }
 
-export default withStyles(styles)(ImageUpload)
+export default withStyles(styles)(ImageUpload);

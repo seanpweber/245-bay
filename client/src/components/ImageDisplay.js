@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import ImageService from '../services/ImageService'
+import React, { Component } from 'react';
+import ImageService from '../services/ImageService';
 // import axios from 'axios';
 
 class ImageDisplay extends Component {
    constructor(props) {
-      super(props)
+      super(props);
 
       this.state = {
          images: [],
-      }
+      };
    }
 
    componentDidMount() {
       ImageService.getImages().then((res) => {
-         this.setState({ images: res.data })
-      })
+         this.setState({ images: res.data });
+      });
    }
 
    render() {
@@ -30,6 +30,6 @@ class ImageDisplay extends Component {
                ))}
             </div>
          </div>
-      )
+      );
    }
 }

@@ -1,20 +1,20 @@
-import { createTheme } from '@material-ui/core'
+import { createTheme } from '@material-ui/core';
 
-const font = "'Raleway', sans-serif"
+const font = "'Raleway', sans-serif";
 
 const theme = createTheme({
    palette: {
       primary: {
-         main: '#0277bd',
-         mainGradient: 'linear-gradient(25deg, #339ba5 20%, #015384 80%)',
+         main: '#49141E',
+         mainGradient: 'linear-gradient(25deg, #5C1C2F 20%, #350C0C 80%)',
          mainGradientReverse:
-            'linear-gradient(25deg, #015384 20%, #339ba5 80%)',
+            'linear-gradient(25deg, #350C0C 20%, #5C1C2F 80%)',
       },
       secondary: {
-         main: '#c62828',
-         mainGradient: 'linear-gradient(25deg, #ff7043 20%, #c62828 80%)',
+         main: '#15163B',
+         mainGradient: 'linear-gradient(25deg, #122A3E 20%, #0B0C27 80%)',
          mainGradientReverse:
-            'linear-gradient(25deg, #c62828 20%, #ff7043 80%)',
+            'linear-gradient(25deg, #0B0C27 20%, #122A3E 80%)',
       },
       lucent: {
          main: '#ffffff',
@@ -34,6 +34,7 @@ const theme = createTheme({
       MuiPaper: {
          rounded: {
             background: 'rgba(230, 230, 230, 0.85)',
+            marginTop: '3rem',
             padding: '1.5rem',
             borderRadius: '0.5rem',
             display: 'flex',
@@ -43,10 +44,21 @@ const theme = createTheme({
       },
       MuiButton: {
          root: {
-            borderRadius: '2rem',
+            borderRadius: '1.05rem',
          },
       },
+      MuiDivider: {
+         root: {
+            marginTop: '0.5rem',
+            marginBottom: '0.7rem',
+         },
+      },
+      MuiAvatar: {
+         root: {
+            background: '#c62828',
+         }
+      }
    },
-})
+});
 
-export default theme
+export default theme;

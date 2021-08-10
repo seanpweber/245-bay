@@ -1,6 +1,6 @@
 //React
-import { React, Component } from 'react'
-import { Link } from 'react-router-dom'
+import { React, Component } from 'react';
+import { Link } from 'react-router-dom';
 
 //Styles
 import {
@@ -9,26 +9,26 @@ import {
    ListItemIcon,
    ListItemText,
    Divider,
-} from '@material-ui/core'
+} from '@material-ui/core';
 
 //Icons
-import HomeIcon from '@material-ui/icons/Home'
-import PersonIcon from '@material-ui/icons/Person'
-import ImageIcon from '@material-ui/icons/Image'
-import MailIcon from '@material-ui/icons/Mail'
-import SettingsIcon from '@material-ui/icons/Settings'
+import HomeIcon from '@material-ui/icons/Home';
+import PersonIcon from '@material-ui/icons/Person';
+import ImageIcon from '@material-ui/icons/Image';
+import MailIcon from '@material-ui/icons/Mail';
+import SettingsIcon from '@material-ui/icons/Settings';
 
-let PATH = window.location.pathname
+let PATH = window.location.pathname;
 
 class MenuList extends Component {
    handleChange = (event) => {
       if ('/' + event.currentTarget.id === window.location.pathname) {
-         event.preventDefault()
+         event.preventDefault();
       } else {
          // Here, we invoke the callback with the new value
-         this.props.transition(event.currentTarget.id)
+         this.props.transition(event.currentTarget.id);
       }
-   }
+   };
 
    render() {
       return (
@@ -83,11 +83,11 @@ class MenuList extends Component {
                </ListItem>
             </List>
          </div>
-      )
+      );
    }
 }
 
-export default MenuList
+export default MenuList;
 
 export class AdminPanel extends Component {
    render() {
@@ -142,6 +142,6 @@ export class AdminPanel extends Component {
                </ListItem>
             </List>
          </div>
-      )
+      );
    }
 }
