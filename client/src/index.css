@@ -3,6 +3,7 @@
 
 /* Univeral Styles */
 body {
+   background-color: #F3F3F3;
    background-image: url(./images/master_chairs.jpg);
    background-position: fixed;
    background-attachment: fixed;
@@ -15,6 +16,10 @@ body {
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
 }
+
+/* .App {
+   background-color: #cfcfcf;
+} */
 
 .MuiToolbar-gutters {
    padding-left: 0px !important;

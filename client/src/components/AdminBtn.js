@@ -1,33 +1,33 @@
 //React
-import { React, Component } from 'react';
-import { Link } from 'react-router-dom';
+import { React, Component } from 'react'
+import { Link } from 'react-router-dom'
 
 //Styles
-import { withStyles } from '@material-ui/styles';
-import { IconButton } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import { IconButton } from '@material-ui/core'
 
 //Icons
-import LockIcon from '@material-ui/icons/Lock';
+import LockIcon from '@material-ui/icons/Lock'
 
 const styles = () => ({
    icon: {
       color: 'white',
       fontSize: '0.75em',
    },
-});
+})
 
 class AdminBtn extends Component {
    handleChange = (event) => {
       if ('/' + event.currentTarget.id === window.location.pathname) {
-         event.preventDefault();
+         event.preventDefault()
       } else {
          // Here, we invoke the callback with the new value
-         this.props.transition(event.currentTarget.id);
+         this.props.transition(event.currentTarget.id)
       }
-   };
+   }
 
    render() {
-      const { classes } = this.props;
+      const { classes } = this.props
 
       return (
          <IconButton
@@ -36,8 +36,8 @@ class AdminBtn extends Component {
             onClick={this.handleChange}>
             <LockIcon className={classes.icon} />
          </IconButton>
-      );
+      )
    }
 }
 
-export default withStyles(styles)(AdminBtn);
+export default withStyles(styles)(AdminBtn)

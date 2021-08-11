@@ -1,22 +1,22 @@
 //React
-import { React, Component } from 'react';
+import { React, Component } from 'react'
 
 //Styles
-import { withStyles } from '@material-ui/styles';
-import { Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import { Grid } from '@material-ui/core'
 
 //Dependencies
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const styles = () => ({
    root: {
       height: '100vh',
    },
-});
+})
 
 class BodyGrid extends Component {
    render() {
-      const { classes } = this.props;
+      const { classes } = this.props
 
       return (
          <div id='content'>
@@ -30,12 +30,12 @@ class BodyGrid extends Component {
                <Grid item>{this.props.children}</Grid>
             </Grid>
          </div>
-      );
+      )
    }
 }
 
 BodyGrid.propTypes = {
    classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles)(BodyGrid);
+export default withStyles(styles)(BodyGrid)

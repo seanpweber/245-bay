@@ -1,19 +1,19 @@
 //React
-import React from 'react';
+import React from 'react'
 
 //Styles
-import { withStyles } from '@material-ui/styles';
-import { Avatar, Typography, TextField, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import { Avatar, Typography, TextField, Button } from '@material-ui/core'
 
 //Icons
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
 //Components
-import Card from './Card';
+import Card from './Card'
 
 //Theme
-import theme from './Theme';
-import { Component } from 'react';
+import theme from './Theme'
+import { Component } from 'react'
 
 const styles = (style) => ({
    avatar: {
@@ -27,11 +27,11 @@ const styles = (style) => ({
    submit: {
       margin: style.spacing(3, 0, 2),
    },
-});
+})
 
 class SignIn extends Component {
    render() {
-      const { classes } = this.props;
+      const { classes } = this.props
 
       return (
          <Card width='xs'>
@@ -43,28 +43,29 @@ class SignIn extends Component {
             </Typography>
             <form className={classes.form} noValidate>
                <TextField
+                  type='password'
                   variant='outlined'
+                  color='secondary'
                   margin='normal'
-                  required
-                  fullWidth
+                  id='key'
                   name='key'
                   label='Admin Key'
-                  type='password'
-                  id='key'
+                  fullWidth
                   autoFocus
+                  required
                />
                <Button
                   type='submit'
-                  fullWidth
                   variant='contained'
                   color='secondary'
+                  fullWidth
                   className={classes.submit}>
                   Sign In
                </Button>
             </form>
          </Card>
-      );
+      )
    }
 }
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(SignIn)

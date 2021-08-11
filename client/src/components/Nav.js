@@ -1,16 +1,16 @@
 //React
-import { React, Component } from 'react';
-import { Link } from 'react-router-dom';
+import { React, Component } from 'react'
+import { Link } from 'react-router-dom'
 
 //Styles
-import { withStyles } from '@material-ui/styles';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles'
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 
 //Components
-import Menu from './Menu';
+import Menu from './Menu'
 
 //Theme
-import theme from './Theme';
+import theme from './Theme'
 
 const styles = () => ({
    root: {
@@ -28,16 +28,16 @@ const styles = () => ({
    hide: {
       visibility: 'hidden',
    },
-});
+})
 
 class Nav extends Component {
    handleChange = (index) => {
       // Here, we invoke the callback with the new value
-      this.props.transition(index);
-   };
+      this.props.transition(index)
+   }
 
    render() {
-      const { classes } = this.props;
+      const { classes } = this.props
 
       return (
          <div className={classes.root}>
@@ -57,8 +57,8 @@ class Nav extends Component {
                </Toolbar>
             </AppBar>
          </div>
-      );
+      )
    }
 }
 
-export default withStyles(styles)(Nav);
+export default withStyles(styles)(Nav)

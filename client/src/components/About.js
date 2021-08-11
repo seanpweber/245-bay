@@ -1,8 +1,8 @@
 //React
-import { React, Component } from 'react';
+import { React, Component } from 'react'
 
 //Styles
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/styles'
 import {
    Avatar,
    Typography,
@@ -10,31 +10,31 @@ import {
    Button,
    Grid,
    CssBaseline,
-} from '@material-ui/core';
+} from '@material-ui/core'
 
 //Icons
-import { PeopleIcon } from '@material-ui/icons/People';
+import { PeopleIcon } from '@material-ui/icons/People'
 
 //Components
-import Card from './Card';
+import Card from './Card'
 
 //Theme
-import theme from './Theme';
+import theme from './Theme'
 
 const styles = (style) => ({
    avatar: {
       margin: style.spacing(1),
       backgroundColor: theme.palette.secondary.main,
    },
-});
+})
 
 class About extends Component {
    render() {
-      const { classes } = this.props;
+      const { classes } = this.props
 
       return (
          <Card width='sm'>
-            <Avatar className={classes.avatar } />
+            <Avatar className={classes.avatar} />
             <Divider />
             <Typography component='p' variant='body1'>
                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -46,8 +46,8 @@ class About extends Component {
                sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Typography>
          </Card>
-      );
+      )
    }
 }
 
-export default withStyles(styles)(About);
+export default withStyles(styles)(About)

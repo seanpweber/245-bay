@@ -1,23 +1,23 @@
 //React
-import { React, Component } from 'react';
+import { React, Component } from 'react'
 import {
    BrowserRouter as Router,
    Route,
    Switch,
    Redirect,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 //Styles
-import { ThemeProvider, withStyles } from '@material-ui/styles';
+import { ThemeProvider, withStyles } from '@material-ui/styles'
 
 //Components
-import BodyGrid from './components/BodyGrid';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Routes from './components/Routes';
+import BodyGrid from './components/BodyGrid'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import Routes from './components/Routes'
 
 //Theme
-import theme from './components/Theme';
+import theme from './components/Theme'
 
 const styles = () => ({
    '@global': {
@@ -32,19 +32,19 @@ const styles = () => ({
          outline: '1px solid slategrey',
       },
    },
-});
+})
 
-let comps = ['home', 'about', 'gallery', 'contact'];
+let comps = ['home', 'about', 'gallery', 'contact']
 
 class App extends Component {
    constructor(props) {
-      super(props);
+      super(props)
       this.state = {
          home: true,
          about: false,
          gallery: false,
          contact: false,
-      };
+      }
    }
 
    handleChange = (index) => {
@@ -52,16 +52,16 @@ class App extends Component {
          if (this.state[comps[i]]) {
             this.setState({
                [comps[i]]: false,
-            });
+            })
          }
       }
 
-      this.setState({ [index]: true });
-      console.log([index] + ' component is open');
-   };
+      this.setState({ [index]: true })
+      console.log([index] + ' component is open')
+   }
 
    render() {
-      styles();
+      styles()
 
       return (
          <Router>
@@ -82,8 +82,8 @@ class App extends Component {
                </ThemeProvider>
             </div>
          </Router>
-      );
+      )
    }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(App)

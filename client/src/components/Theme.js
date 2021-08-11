@@ -1,6 +1,6 @@
-import { createTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core'
 
-const font = "'Raleway', sans-serif";
+const font = "'Raleway', sans-serif"
 
 const theme = createTheme({
    palette: {
@@ -34,7 +34,6 @@ const theme = createTheme({
       MuiPaper: {
          rounded: {
             background: 'rgba(230, 230, 230, 0.85)',
-            marginTop: '3rem',
             padding: '1.5rem',
             borderRadius: '0.5rem',
             display: 'flex',
@@ -56,9 +55,9 @@ const theme = createTheme({
       MuiAvatar: {
          root: {
             background: '#c62828',
-         }
-      }
+         },
+      },
    },
-});
+})
 
-export default theme;
+export default theme
