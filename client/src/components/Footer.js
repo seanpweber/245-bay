@@ -43,7 +43,7 @@ class Footer extends Component {
             <AppBar position='static' className={classes.appBar}>
                <Toolbar>
                   <Typography className={classes.copyright} variant='body1'>
-                     © 2021 Sean P. Weber
+                     © 2021 245 Bay
                   </Typography>
                   <AdminBtn transition={this.handleChange} />
                </Toolbar>

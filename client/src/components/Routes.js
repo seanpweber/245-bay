@@ -37,10 +37,7 @@ function AnimatedRoutes() {
    return (
       <div>
          <SwitchTransition>
-            <CSSTransition
-               key={location.key}
-               classNames="fade"
-               timeout={300}>
+            <CSSTransition key={location.key} classNames='fade' timeout={300}>
                <Switch location={location}>
                   <Route path='/home' component={Home} />
                   <Route path='/aboutus' component={About} />

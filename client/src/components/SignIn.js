@@ -2,7 +2,7 @@
 import React from 'react'
 
 //Styles
-import { makeStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import { Avatar, Typography, TextField, Button } from '@material-ui/core'
 
 //Icons
@@ -13,8 +13,9 @@ import Card from './Card'
 
 //Theme
 import theme from './Theme'
+import { Component } from 'react'
 
-const styles = makeStyles((style) => ({
+const styles = (style) => ({
    avatar: {
       margin: style.spacing(1),
       backgroundColor: theme.palette.secondary.main,
@@ -26,40 +27,45 @@ const styles = makeStyles((style) => ({
    submit: {
       margin: style.spacing(3, 0, 2),
    },
-}))
+})
 
-export default function SignIn() {
-   const classes = styles()
+class SignIn extends Component {
+   render() {
+      const { classes } = this.props
 
-   return (
-      <Card width='xs'>
-         <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-         </Avatar>
-         <Typography component='h1' variant='h5'>
-            Admin Sign in
-         </Typography>
-         <form className={classes.form} noValidate>
-            <TextField
-               variant='outlined'
-               margin='normal'
-               required
-               fullWidth
-               name='key'
-               label='Admin Key'
-               type='password'
-               id='key'
-               autoFocus
-            />
-            <Button
-               type='submit'
-               fullWidth
-               variant='contained'
-               color='primary'
-               className={classes.submit}>
-               Sign In
-            </Button>
-         </form>
-      </Card>
-   )
+      return (
+         <Card width='xs'>
+            <Avatar className={classes.avatar}>
+               <LockOutlinedIcon />
+            </Avatar>
+            <Typography component='h1' variant='h5'>
+               Admin Sign in
+            </Typography>
+            <form className={classes.form} noValidate>
+               <TextField
+                  type='password'
+                  variant='outlined'
+                  color='secondary'
+                  margin='normal'
+                  id='key'
+                  name='key'
+                  label='Admin Key'
+                  fullWidth
+                  autoFocus
+                  required
+               />
+               <Button
+                  type='submit'
+                  variant='contained'
+                  color='secondary'
+                  fullWidth
+                  className={classes.submit}>
+                  Sign In
+               </Button>
+            </form>
+         </Card>
+      )
+   }
 }
+
+export default withStyles(styles)(SignIn)

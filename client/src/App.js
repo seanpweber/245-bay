@@ -19,8 +19,6 @@ import Routes from './components/Routes'
 //Theme
 import theme from './components/Theme'
 
-let PATH = window.location.pathname
-
 const styles = () => ({
    '@global': {
       '*::-webkit-scrollbar': {

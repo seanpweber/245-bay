@@ -18,18 +18,6 @@ const styles = () => ({
    },
 })
 
-// class Home extends Component {
-//     render() {
-//         let currentComp = this.props.currentComp
-
-//         if (currentComp !== 1) {
-//             return null
-//           } else {
-//             return <HomePanel />
-//         }
-//     }
-// }
-
 class Home extends Component {
    render() {
       const { classes } = this.props
@@ -48,8 +36,8 @@ class Home extends Component {
                </Grid>
                <Grid item fullWidth className={classes.grid}>
                   <Button
-                     variant='contained'
-                     color='secondary'
+                     variant='outlined'
+                     color='primary'
                      component={Link}
                      to='/contactus'>
                      Contact Us

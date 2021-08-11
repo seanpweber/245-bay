@@ -22,7 +22,10 @@ import PropTypes from 'prop-types'
 //Components
 import Card from './Card'
 
-const styles = (theme) => ({
+const styles = () => ({
+   card: {
+      marginTop: '3rem',
+   },
    divider: {
       marginTop: '0.5rem',
       marginBottom: '0.7rem',
@@ -84,7 +87,7 @@ class Contact extends Component {
    handleSend = () => {
       const { name, email, subject, message } = this.state
       if (name === '' || email === '' || subject === '' || message === '') {
-         alert('Please complete the form!')
+         // alert('Please complete the form!')
          return
       } else {
          let templateParams = {
@@ -108,7 +111,7 @@ class Contact extends Component {
          //     'user_e2SBprNH4w0Ma1Ze0RS4r'
          // )
 
-         // this.handleOpen();
+         this.handleOpen();
       }
    }
 
@@ -144,7 +147,10 @@ class Contact extends Component {
 
       return (
          <div>
-            <Card width='sm'>
+            <Card 
+            width='sm' 
+            className={classes.card} 
+            top>
                <Typography component='h1' variant='h5'>
                   Contact Us
                </Typography>
@@ -220,7 +226,7 @@ class Contact extends Component {
                            variant='contained'
                            color='primary'
                            spacing={2}
-                           onClick={this.handleOpen}>
+                           onClick={this.handleSend}>
                            Send
                         </Button>
                      </Grid>

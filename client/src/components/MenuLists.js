@@ -97,7 +97,7 @@ export class AdminPanel extends Component {
                <ListItem
                   button
                   component={Link}
-                  to='/'
+                  to='/home'
                   onClick={this.handleChange}
                   id={1}>
                   <ListItemIcon>
